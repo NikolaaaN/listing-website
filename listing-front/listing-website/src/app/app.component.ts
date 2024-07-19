@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { SliderComponent } from './slider/slider.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +20,6 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
     MatButtonModule,
     FooterComponent,
-    SliderComponent,
     LoginComponent,
     CommonModule,
   ],
