@@ -1,0 +1,40 @@
+<form
+  [formGroup]="filterForm"
+  (ngSubmit)="applyFilters()"
+  class="filter-container"
+>
+  <div class="categories" fxHide.xs>
+    <label>Categories</label>
+    <div *ngFor="let category of categories">
+      <button mat-button type="button" (click)="toggleCategory(category)">
+        {{ category }}
+      </button>
+    </div>
+  </div>
+
+  <div class="price-range">
+    <label>Price Range</label>
+    <mat-slider
+      sliderInput="1000"
+      min="0"
+      max="1000"
+      step="10"
+      tickInterval="100"
+      thumbLabel
+      aria-label="Price range slider"
+    >
+      <input matSliderStartThumb formControlName="priceRange1" />
+      <input matSliderEndThumb formControlName="priceRange2" />
+    </mat-slider>
+    <div class="price-values">
+      <span
+        >Min: {{ filterForm.value.priceRange1 }} -
+        {{ filterForm.value.priceRange2 }}</span
+      >
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="applyFilters()">
+    Apply Filters
+  </button>
+</form>

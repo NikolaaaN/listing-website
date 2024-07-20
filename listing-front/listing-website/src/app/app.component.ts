@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
     FooterComponent,
     LoginComponent,
     CommonModule,
+    MatFormFieldModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

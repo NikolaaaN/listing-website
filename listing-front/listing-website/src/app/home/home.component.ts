@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { FilterComponent } from '../filter/filter.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatDividerModule, CommonModule],
+  imports: [MatDividerModule, CommonModule, FilterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

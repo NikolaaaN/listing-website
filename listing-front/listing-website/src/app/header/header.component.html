@@ -1,11 +1,21 @@
 <mat-toolbar color="primary">
   <span>{{ appName }}</span>
   <span class="spacer"></span>
-  <nav>
+  <nav fxLayout.md="row" fxLayout.xs="column" fxHide.xs>
     <a mat-button routerLink="/home">Home</a>
     <a mat-button routerLink="/listings">Listings</a>
     <a mat-button routerLink="/add-listing">Add Listing</a>
     <a mat-button routerLink="/profile">Profile</a>
     <a mat-button routerLink="/login">Login</a>
   </nav>
+  <button mat-icon-button [matMenuTriggerFor]="menu" fxHide fxShow.lt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" fxHide fxShow.lt-sm>
+    <button mat-menu-item="/home">Home</button>
+    <button mat-menu-item="/listings">Listings</button>
+    <button mat-menu-item="/add-listing">Add Listing</button>
+    <button mat-menu-item="/profile">Profile</button>
+    <button mat-menu-item="/login">Login</button>
+  </mat-menu>
 </mat-toolbar>
