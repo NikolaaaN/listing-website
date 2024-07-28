@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { RegistrationService } from '../services/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,10 @@ import { CommonModule } from '@angular/common';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private registrationService: RegistrationService
+  ) {
     this.registrationForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -56,14 +60,18 @@ export class RegistrationComponent implements OnInit {
   onSubmit(): void {
     if (this.registrationForm.valid) {
       const registrationData = this.registrationForm.value;
-      // this.registrationService.register(registrationData).subscribe(
-      //   (response: any) => {
-      //     console.log('Registration successful', response);
-      //   },
-      //   (error: any) => {
-      //     console.error('Registration failed', error);
-      //   }
-      // );
+      const user = {
+        email: registrationData.email,
+        password: registrationData.password,
+      };
+      this.registrationService.register(user).subscribe(
+        (response: any) => {
+          console.log('Registration successful', response);
+        },
+        (error: any) => {
+          console.error('Registration failed', error);
+        }
+      );
     }
   }
 }

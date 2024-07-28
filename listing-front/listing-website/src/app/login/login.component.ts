@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { LoginServiceService } from '../services/login-service.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,10 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginServiceService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -33,9 +38,13 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const loginData = this.loginForm.value;
-      console.log('Login Data: ', loginData);
-      // Implement your login logic here
+      let user: User = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.loginService.login(user).subscribe((res: User) => {
+        console.log('Login Data: ', res);
+      });
     }
   }
 }
