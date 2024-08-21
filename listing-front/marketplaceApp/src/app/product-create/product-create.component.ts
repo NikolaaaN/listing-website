@@ -17,10 +17,9 @@ export class ProductCreateComponent {
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      price: ['', [Validators.required, Validators.required]],
+      price: ['', [Validators.required]],
       description: ['', Validators.required],
       image: [null, Validators.required],
-      email: [null],
     });
   }
 
@@ -34,7 +33,6 @@ export class ProductCreateComponent {
         this.productForm.get('description')?.value
       );
       formData.append('image', this.productForm.get('image')?.value);
-      formData.append('email', this.productForm.get('email')?.value);
       this.productService.submitProduct(formData).subscribe(
         (response) => {
           console.log('Product submitted successfully', response);

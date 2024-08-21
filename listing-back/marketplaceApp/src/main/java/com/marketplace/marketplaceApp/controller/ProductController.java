@@ -35,6 +35,7 @@ public class ProductController {
             @RequestParam("name") String name,
             @RequestParam("price") int price,
             @RequestParam("description") String description,
+            @RequestParam("email") String email,
             @RequestParam("image") MultipartFile image) {
 
         try {
@@ -45,7 +46,7 @@ public class ProductController {
             InputStream inputStream = image.getInputStream();
             byte[] imageArr = StreamUtils.copyToByteArray(inputStream);
             product.setImage(imageArr);
-            productService.addProduct(product);
+            productService.addProduct(product, email);
             return ResponseEntity.ok("Product submitted successfully");
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

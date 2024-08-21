@@ -11,6 +11,8 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   submitProduct(formData: FormData): Observable<any> {
+    console.log(sessionStorage.getItem('email'));
+    formData.append('email', sessionStorage.getItem('email')!);
     return this.http.post<any>(this.apiUrl, formData);
   }
 

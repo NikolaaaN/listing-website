@@ -1,0 +1,19 @@
+<table>
+  <tbody class="table">
+    <tr
+      *ngFor="let product of products"
+      class="products"
+      (click)="viewProductDetails(product)"
+    >
+      <td>
+        <img
+          [src]="'data:image/jpeg;base64,' + product.image"
+          alt="{{ product.name }}"
+        />
+      </td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>${{ product.price }}</td>
+    </tr>
+  </tbody>
+</table>

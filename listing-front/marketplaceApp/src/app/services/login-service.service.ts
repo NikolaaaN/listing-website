@@ -14,7 +14,7 @@ export class LoginServiceService {
   login(user: User) {
     return this.http.post<User>(this.url, user).pipe(
       tap((response: any) => {
-        sessionStorage.setItem('username', response.username);
+        sessionStorage.setItem('email', response.email);
       }),
       catchError(this.placeholder)
     );
