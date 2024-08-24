@@ -18,7 +18,6 @@ public class RegistrationController {
 
     @PostMapping()
     public ResponseEntity<User> registerUser(@Validated @RequestBody User user){
-        System.out.println(user);
         try{
             User registeredUser = userService.addUser(user);
             return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);

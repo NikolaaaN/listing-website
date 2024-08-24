@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .product-details {
@@ -17,4 +18,8 @@
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+
+.seller-details {
+  justify-content: left;
 }

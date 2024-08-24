@@ -11,7 +11,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-
     public User addUser(User user) {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new RuntimeException("Email already exists");

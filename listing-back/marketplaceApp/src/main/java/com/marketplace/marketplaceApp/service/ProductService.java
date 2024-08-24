@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
-    public static final int PRODUCT_PAGE_SIZE = 25;
+    public static final int PRODUCT_PAGE_SIZE = 30;
 
     @Autowired
     private ProductRepository productRepository;
@@ -33,5 +33,9 @@ public class ProductService {
     public Page<Product> getProducts(int page) {
         Pageable pageable = PageRequest.of(page, PRODUCT_PAGE_SIZE);
         return productRepository.findAll(pageable);
+    }
+
+    public Product getProduct(Long id){
+        return productRepository.findProductById(id);
     }
 }

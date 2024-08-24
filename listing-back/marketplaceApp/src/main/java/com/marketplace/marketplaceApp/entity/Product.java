@@ -3,6 +3,7 @@ package com.marketplace.marketplaceApp.entity;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "products", schema = "products")
@@ -73,5 +74,16 @@ public class Product {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                ", user=" + user +
+                '}';
     }
 }
